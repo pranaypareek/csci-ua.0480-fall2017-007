@@ -1,10 +1,10 @@
 ---
 layout: slides
-title: Values, Types, and Operators
+title: Values, Types, Operators and Type Coercion
 ---
 
 <section markdown="block" class="intro-slide">
-# Values, Types, and Operators 
+# {{ page.title }}
 
 ### {{ site.course_number}}-{{ site.course_section }}
 
@@ -29,6 +29,18 @@ let and const hoisting
 http://www.ecma-international.org/ecma-262/6.0/#sec-let-and-const-declarations
 {% endcomment %}
 
+<section markdown="block">
+## All Types All the Time
+
+In this set of slides, __we'll take a look at__:
+
+1. {:.fragment} JavaScript's types
+2. {:.fragment} `Numbers` and numeric operators
+3. {:.fragment} `Strings` and string operators
+4. {:.fragment} `Booleans` and logical and comparison operators
+5. {:.fragment} `undefined` and `null`
+</section>
+
 
 <section markdown="block">
 ## Some Definitions
@@ -42,6 +54,7 @@ http://www.ecma-international.org/ecma-262/6.0/#sec-let-and-const-declarations
 * __prefix operator__ <span class="fragment"> - an operator that goes before (to the left) of its operand(s)</span>
 * __infix operator__ <span class="fragment"> - an operator that goes between its operands</span>
 </section>
+
 
 <section markdown="block">
 ## Let's Start off with Comments
@@ -276,9 +289,8 @@ A quick list of __binary__, __infix__ arithmetic operators (they take two operan
 * __-__ - subtraction
 * __\*__ - multiplication
 * __/__ - division
-* __%__ - modulo (__what does this do?__)
-* {:.fragment} (remainder) &rarr;
-* {:.fragment} __\*\*__ works too if engine supports ES7)
+* __%__ - modulo (remainder)
+* {:.fragment} __\*\*__ for exponentiation works too if your js engine supports ES7
 * {:.fragment} __check out these operations in the node REPL__ &rarr;
 </section>
 
@@ -445,6 +457,21 @@ So, there's  __Infinity__ and  __-Infinity__
 * dividing by 0 yields `infinity`
 * equality operators and the global function `isFinite` can be used to determine if a value is `Infinity`
 
+</section>
+
+<section markdown="block">
+## Special Numeric Values and Bitwise Operators
+
+__For bitwise operators... <code>Nan</code>, <code>Infinity</code>, and <code>-Infinity</code> are all converted to 0__ &rarr;
+
+<pre><code data-trim contenteditable>
+NaN | 2 // evaluates to 2
+Infinity & 10 // evaluates to 0
+</code></pre>
+
+Why? Because [the specs](http://es5.github.io/#x11.10) [say so](http://es5.github.io/#x9.5)
+
+Also... there is definitely a binary representation for these special numbers (<code>Nan</code>, <code>Infinity</code>, and <code>-Infinity</code>)... the [closest I came to determining it was here](http://www.2ality.com/2012/04/number-encoding.html)
 </section>
 
 <section markdown="block">
@@ -707,6 +734,23 @@ true ? "ok" : "not ok!"
 * {:.fragment} "ok"
 * {:.fragment} format is <code>test</code> (boolean expression) __?__ <code>value</code> to return if true __:__ <code>value</code> to return if false
 
+<br>
+The ternary operator __works like an if/else statement__, but it's __one line__ and it __evaluates to a value__:
+{:.fragment}
+
+<pre><code data-trim contenteditable>
+// ternary followed by equivalent if/else
+let x = 5 > 2 ? 'yes' : 'no';
+
+let x;
+if(5 > 2) {
+    x = 'yes';
+} else {
+    x = 'no';
+}
+</code></pre>
+{:.fragment}
+
 
 </section>
 <section markdown="block">
@@ -774,6 +818,11 @@ NaN
 0
 </code></pre>
 {:.fragment}
+
+<br>
+
+How do we know? We can read the [ECMAScript specifications](http://www.ecma-international.org/ecma-262/#sec-addition-operator-plus)!
+{:.fragment}
 </section>
 
 <section markdown="block">
@@ -782,6 +831,7 @@ NaN
 * __JavaScript__ is a __dynamic__ and __weakly__ typed language.
 * It often goes out of its way to make sure that operators and functions work, regardless of what types are given as operands or arguments.
 * It will try to __coerce__ types into other types to make operators and functions _work_.
+
 </section>
 
 <section markdown="block">
@@ -809,6 +859,9 @@ NaN
 * this is Usually an unwanted behavior; __to avoid this, use: === and !==__
 	* these operators check __type__ and __value__ 
 	* use these three-character comparison operators to prevent unexpected type conversions 
+
+<br>
+If you want to see the __details for every possible operand combination for double equals__, [check out mdn's table](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness#Loose_equality_using) 👀
 </section>
 
 
@@ -818,6 +871,230 @@ NaN
 ### (mostly)
 </section>
 
+{% comment %}
+<section markdown="block">
+## Addition is Sooo Weird
+
+Armed with that knowledge, __what values do these two expressions produce?__ &rarr;
+
+<pre><code data-trim contenteditable>
+'foo' + (1 + 2)
+('foo' + 1) + 2
+</code></pre>
+
+{:.fragment}
+Order of evaluation matters... these two expressions produce different values
+
+<pre class="fragment"><code data-trim contenteditable>
+foo3
+foo12
+</code></pre>
+
+</section>
+
+<section markdown="block">
+## Type Coercion With Equality Operators
+
+* JavaScript will do its best to convert types so that they can be checked for equality - __these all return true__ &rarr;
+	* <code>"10" == 10</code>
+	* <code>0 == false</code>
+	* <code>"" == false</code>
+* this is Usually an unwanted behavior; __to avoid this, use: === and !==__
+	* these operators check __type__ and __value__ 
+	* use these three-character comparison operators to prevent unexpected type conversions 
+
+    
+</section>
+{% endcomment %}
+
+<section markdown="block">
+## Relational / Ordering Operators
+
+__For relational / ordering operators like &gt;, &lt;, etc.__ &rarr;
+
+1. convert objects to a _primitive_: booleans, numbers, strings, null, and undefined
+2. if strings, compare lexicographically
+3. otherwise convert both to numbers
+4. NaN is compared as unordered with everything (which is why NaN === NaN is false)
+</section>
+<section markdown="block">
+## Back to Unary Operators
+
+What the what????
+
+<pre><code data-trim contenteditable>
++-12 
+-+12
++"hello"
+</code></pre>
+
+These expressions evaluate to...
+{:.fragment}
+<pre><code data-trim contenteditable>
+-12
+-12
+NaN
+</code></pre>
+{:.fragment}
+
+From the [docs on mdn](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Arithmetic_Operators#Unary_negation_(-))...
+{:.fragment}
+
+* unary + ... will try to convert its operand to a number (if it can't be converted to a number, then `NaN`)
+* unary - ... will convert its operand to negative number
+{:.fragment}
+
+<br>
+The order of operations is [innermost prefix operator first (right to left)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence).
+{:.fragment}
+
+</section>
+
+<section markdown="block">
+## Ugh All of That is Kind of Crazy
+
+### A quick summary of all of that automatic conversion business.
+
+* __when adding values__
+	* if either of the values is a string, coerce the other to perform string concatenation
+	* otherwise convert both sides to numbers (if they aren't already) and perform addition
+* __when comparing values with &lt;__
+	* try to convert both sides to numbers first, so that comparison can be easily performed
+	* if either operand is NaN, the result is False
+* __when it doubt, check the [some online resources, like mdn](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators)__ (or, of course [SO](http://stackoverflow.com/questions/14687876/how-do-the-javascript-relational-comparison-operators-coerce-types) it)
+</section>
+
+<section markdown="block">
+## Handling Automatic Type Conversion
+
+### How do we get out of this mess?
+
+__...Without having to remember a series of obscure rules__ &rarr;
+
+1. {:.fragment} one way is to __use triple equals__ - <code>===</code> (we've gone over this before!)
+2. {:.fragment} another way is to just explicitly _cast_ your operand(s) to minimize surprises
+</section>
+
+<section markdown="block">
+## Casting
+
+We can use __object contructors__ as functions to cast to a type: 
+
+* {:.fragment} __use constructors__ (named after their corresponding type) __as functions__ by dropping the keyword <code>new</code> to convert to that type
+* {:.fragment} note that if you use <code>new</code> with your constructor (avoid!)...
+    * primitive type is wrapped in an object (to be discussed later!)
+    * when asked for a value, these objects _usually_ yield the value of their primitive type
+
+<pre><code data-trim contenteditable>
+// do this (call constructor named after type as a function)
+i = Number("2")
+a = Boolean(false);
+// not this (not a good idea to use new!)
+b = new Boolean(false);
+// because
+console.log(typeof a); // --> boolean
+console.log(typeof b); // --> object
+// ... and 😒
+Boolean(new Boolean(false)) // True!?
+</code></pre>
+{:.fragment}
+</section>
+
+<section markdown="block">
+## Casting Continued
+
+Another option is to use some of the __operators__ that we learned to coax JavaScript into doing a predictable automatic conversion for us:
+
+* __convert to a boolean__
+	* use _not_ twice (negate the not, but preserve the type conversion)
+	* <code>!!"hello"</code>
+* __convert to a number__
+	* use unary <code>+</code>
+    * for example: <code>+"5"</code>, <code>+"hello"</code>
+    * use `parseInt`
+* __convert to a string__
+	* just add an empty string to it
+	*  <code>5 + ""</code>
+
+<br>
+For mind boggling detail, see [You Don't Know JS](https://github.com/getify/You-Dont-Know-JS/blob/master/types%20%26%20grammar/ch4.md) on coercion.
+</section>
+
+<section markdown="block">
+## Checking for undefined 
+
+Undefined (and also null) means __the absence of a _meaningful_ value__.
+
+How would you check if a value is __undefined__? __The two ways to do this are__: &rarr;
+
+* {:.fragment} (preferred) <code>if (myVar === undefined)</code>
+* {:.fragment} <code>if (typeof myVar === 'undefined')</code>
+	* {:.fragment} handles undeclared variables
+
+</section>
+
+<section markdown="block">
+## Checking for NaN
+
+Use the isNaN function to determine if a value is __not a number__.
+
+__(comparing NaN to itself always yields false)__ &rarr;
+
+<pre><code data-trim contenteditable>
+NaN == NaN
+NaN === NaN
+
+// false
+// false
+// weird, eh?
+</code></pre>
+
+Remember... NaN is not ordered with any value!. Use <code>isNaN</code>...
+
+<pre><code data-trim contenteditable>
+isNaN(NaN)
+</code></pre>
+</section>
+
+<section markdown="block">
+## Some Style
+
+The previous material in this set of slides are about general best practices. Not adhering to them may:
+
+* result in your code yielding unexpected results
+* difficult to understand / non-standard code
+
+<br>
+__The next few suggestions, however, are purely stylistic - just about how code is formatted:__ &rarr;
+
+<div markdown="block" class="img">
+![poochie](http://i.kinja-img.com/gawker-media/image/upload/s--ZbZrlXcj--/xnfzofkxpckzxbkqxnbq.jpg)
+</div>
+
+</section>
+<section markdown="block">
+## Style Continued
+
+* use 1TBS, __One True Brace Style__: open curly brace on same line of code as last line preceding the current block of code / statement header (not on a new line)
+<pre><code data-trim contenteditable>
+if (some_boolean_expression) { // <-- curly brace here!
+	// do stuff
+}
+</code></pre>
+* use (lower) camel case to separate words in identifiers / variables names: <code>myVerboseVariableName</code>
+* remember to indent blocks of code!
+</section>
+
+<section markdown="block">
+## Summary
+
+* __automatic type conversion is tricky__; sometimes it's helpful to check the specs, mdn, speaking javascript or even stackoverflow 
+* you can get around automatic type conversion (if that's desirable) by __casting__ 
+    * use object constructors as functions (`Number`, `Boolean`, etc.)
+    * use operators like <code>!!</code>, <code>+</code>, <code>+ ""</code>
+* to __check for undefined__: <code>if(typeof myVar == 'undefined')</code>
+* to __check for NaN__: <code>isNan(myVar)</code>
+</section>
 
 <section markdown="block">
 ## Order of Operations
@@ -868,4 +1145,5 @@ We talked about a bunch of operators. The following are categories of operators,
 	{:.fragment}
 
 </section>
+
 

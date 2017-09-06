@@ -1,8 +1,12 @@
 	<td markdown="block">
-* [Intro](slides/01/intro.html)
-* [About JavaScript](slides/01/javascript.html)
-* [Values, Types, and Operators](slides/01/values-types-operators.html)
-* [Variables, Built-in Functions](slides/01/variables-control-structures.html)
+* [Intro](slides/intro/intro.html)
+* [About JavaScript](slides/js/js-intro.html)
+* [Values, Types, and Operators](slides/js/js-values-types-operators.html)
+* [Variables, Built-in Functions](slides/js/js-variables-functions.html)
+* [Control Structures](slides/js/js-conditionals-loops.html)
+* [Functions](slides/js/js-functions.html)
+* [Hoisting](slides/js/js-hoisting.html)
+* Survey, Homework #0 and Piazza
 
 {% comment %}
 * [About Class #3](slides/03/meta.html)
@@ -30,11 +34,10 @@ For a more gentle introduction to JavaScript, read the first 3 chapters of [{{ s
 {% endcomment %}
 </td>
 	<td markdown="block">
-Due Today, 1/23 (during class / immediately after?)
+
+Do these two things today, please!
 
 * [A Survey]({{ site.survey_intro }}) / form for GitHub username
-
-Due Wednesday, 1/25, before 11am
-
 * [Homework #0](homework/00.html) (install node)
+* [Get on piazza]({{ site.piazza }}) 
 </td>
