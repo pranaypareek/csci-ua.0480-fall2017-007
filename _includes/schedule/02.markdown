@@ -46,7 +46,7 @@ For a more gentle introduction to functions in JavaScript, check out [{{ site.bo
 	<td markdown="block">
 
 
-Quizzes to be posted
+Quizzes #2 and #3 due __9/19__ before class
 
 {% comment %}
 Due Thursday, 9/15, by 11pm
