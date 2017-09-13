@@ -283,6 +283,35 @@ console.log(a);
 
 </section>
 
+<section markdown="block">
+## Spread to Copy
+
+As of ES6, you can also use __spread syntax__ to copy an Array:
+
+<pre><code data-trim contenteditable>
+const numbers = [1, 2, 3, 4];
+const copy = [...numbers]
+</code></pre>
+
+1. in your `Array` literal
+2. add three dots 
+3. followed by the name of the Array you're copying
+4. only goes one-level deep (shallow)
+5. note that you can also use this on multiple Arrays (to __concatenate__):
+    <pre><code data-trim contenteditable>
+const words1 = ['foo', 'bar'];
+const words2 = ['baz', 'qux'];
+const allWords = [...words1, ...words2]
+</code></pre>
+{:.fragment}
+
+[See more about spread syntax on mdn](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator#Copy_an_array)
+{:.fragment}
+
+
+
+</section>
+
 
 <section markdown="block">
 ## Back to Arrays and Mutability
@@ -493,13 +522,13 @@ console.log([1, 3, 3, 7].indexOf(3, 2));
 
 </section>
 <section markdown="block">
-### Looping Over Arrays
+## Looping Over Arrays
 
 Errrr. It looks like there are a lot of ways to do this. __What are they (there are three, and one of 'em is the old classic.__ &rarr;
 
 * use a for loop
 * use the forEach method
-* use the every method
+* use for...of
 {:.fragment}
 
 <br>
@@ -510,7 +539,7 @@ __Which one should we use?__ &rarr;
 * <code>forEach</code> and every are a little bit closer to what you're actually doing (_more expressive_)
 	* though using a callback / dealing with scoping may be tricky
 	* can't break out of <code>forEach</code>
-	* can break out of <code>every</code> by returning <code>false</code> (you have to return <code>true</code> on every iteration, though)
+* `for of` - ES6 syntax that allows looping over every element in an iterable object
 {:.fragment}
 
 </section>
@@ -541,22 +570,7 @@ const doubleIt = function(x) {
 nums.forEach(doubleIt); 
 </code></pre>
 
-<pre><code data-trim contenteditable>
-// with every and simulating break (define callback first)
-const doubleItLessThanThree = function(x) {
-	if (x >= 3) {
-		return false;
-	}
-	console.log(x * 2);
-	return true;
-}
-
-nums.every(doubleItLessThanThree);
-</code></pre>
-</section>
-
-<section markdown="block">
-## Again,With More Anonymous Functions
+(Or with an anonymous function)
 
 <pre><code data-trim contenteditable>
 // with forEach
@@ -564,15 +578,25 @@ nums.forEach(function(num, i) {
 	console.log(num * 2);
 });
 
-// with every and simulating break
-nums.every(function(num, i) {
-	if (num >= 3) {
-		return false;
-	}
-	console.log(num * 2);
-	return true;
-});
 </code></pre>
+
+</section>
+
+<section markdown="block">
+### And Part 3: for...of
+
+__Use for...of__. It's similar in expressiveness to `forEach`, but only available in ES6 &rarr;
+
+<pre><code data-trim contenteditable>
+const words = ['foo', 'bar', 'baz']
+for (let w of words) {
+    console.log(words);
+}
+</code></pre>
+
+* you can use `break` and `continue`!
+* can be used to go over other iterable objects, like strings, the arguments object, etc.
+
 </section>
 
 <section markdown="block">
@@ -629,15 +653,26 @@ f(1, 2, 3);
 </section>
 
 <section markdown="block">
-## ES6 Features
+##  Destructuring
 
-* rest operator
-    * instead of arguments
-    * for concatenation
-* destructuring
-    * obj
-    * arrays
-* for of
+Think of it as multiple assignment:
+
+* works with Arrays
+* works with objects (but you use curly braces instead)
+
+<br>
+
+<pre><code data-trim contenteditable>
+const coord = [1, 2];
+let [x, y] = coord;
+console.log(x); // 1
+console.log(y); // 2
+</code></pre>
+
+<pre><code data-trim contenteditable>
+const {a, b} = {a: 1, b:2}
+</code></pre>
+
 </section>
 {% comment %}
 <section markdown="block">

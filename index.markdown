@@ -25,8 +25,6 @@ nav-state: index
 <td markdown="block">
 * Introductions
 * JavaScript Basics
-* Variables
-* Functions
 
 {% comment %} 
 TODO:
@@ -47,11 +45,8 @@ TODO:
 <!-- ------------ --><a name="02"></a>
 <tr><td>2</td><td><strong>Sep 11</strong><br>Mon</td>
 <td markdown="block">
-* Objects
-* Node
-* Modules and Require
-* Static Analysis Tools
-* Introduction to Higher Order Functions (Maybe?)
+* Variables
+* Functions
 
 {% comment %} 
 TODO
@@ -82,22 +77,20 @@ TODO
 <!-- ------------ --><a name="03"></a>
 <tr><td>3</td><td><strong>Sep 13</strong><br>Wed</td>
 <td markdown="block">
-* Higher Order Functions
+* Objects
+* Node
+* Modules and Require
+* Static Analysis Tools
+* Introduction to Higher Order Functions (Maybe?)
 </td>
-<td></td><td></td><td markdown="block"></td>{% comment %}
 {% include schedule/03.markdown %}
-{% endcomment %}
 </tr>
 
 
 <!-- ------------ --><a name="04"></a>
 <tr><td>4</td><td><strong>Sep 18</strong><br>Mon</td>
 <td markdown="block">
-* Objects and Prototypes
-* Patterns
-* Networking Primer
-* Network Programming
-* Streams / Buffers / File IO
+* Higher Order Functions
 
 </td>
 <td></td><td></td><td markdown="block"></td>{% comment %}
@@ -109,9 +102,11 @@ TODO
 <!-- ------------ --><a name="05"></a>
 <tr><td>5</td><td><strong>Sep 20</strong><br>Wed</td>
 <td markdown="block">
-* Web Development
-* HTTP
-* A Simple Web Server
+* Objects and Prototypes
+* Patterns
+* Networking Primer
+* Network Programming
+* Streams / Buffers / File IO
 
 </td>
 <td></td><td></td><td markdown="block"></td>{% comment %}
@@ -123,9 +118,9 @@ TODO
 <!-- ------------ --><a name="06"></a>
 <tr><td>6</td><td><strong>Sep 25</strong><br>Mon</td>
 <td markdown="block">
-* A Simple Web Server Continued / Our "Framework"
-* Routing
-* Node HTTP Module
+* Web Development
+* HTTP
+* A Simple Web Server
 </td>
 <td></td><td></td><td markdown="block"></td>{% comment %}
 {% include schedule/06.markdown %}
@@ -136,9 +131,9 @@ TODO
 <!-- ------------ --><a name="07"></a>
 <tr><td>7</td><td><strong>Sep 27</strong><br>Wed</td>
 <td markdown="block">
-* HTTP Module
-* Web Framework
-* Project Layout
+* A Simple Web Server Continued / Our "Framework"
+* Routing
+* Node HTTP Module
 </td>
 <td></td><td></td><td markdown="block"></td>{% comment %}
 {% include schedule/07.markdown %}
@@ -149,9 +144,9 @@ TODO
 <!-- ------------ --><a name="08"></a>
 <tr><td>8</td><td><strong>Oct 02</strong><br>Mon</td>
 <td markdown="block">
-* Web Framework Continued
-* Middleware
-* Templating
+* HTTP Module
+* Web Framework
+* Project Layout
 </td>
 <td></td><td></td><td markdown="block"></td>{% comment %}
 {% include schedule/08.markdown %}
@@ -162,9 +157,9 @@ TODO
 <!-- ------------ --><a name="09"></a>
 <tr><td>9</td><td><strong>Oct 04</strong><br>Wed</td>
 <td markdown="block">
-* Cookies
-* Sessions
-* Forms
+* Web Framework Continued
+* Middleware
+* Templating
 
 {% comment %} 
 * make sure to go over advanced forms
@@ -188,9 +183,9 @@ TODO
 <!-- ------------ --><a name="10"></a>
 <tr><td>10</td><td><strong>Oct 11</strong><br>Wed</td>
 <td markdown="block">
-* NoSQL Database
-* Object Document Mapper 
-* Database Design
+* Cookies
+* Sessions
+* Forms
 
 </td>
 <td></td><td></td><td markdown="block"></td>{% comment %}
@@ -229,8 +224,9 @@ __EXAM #1 (Midterm Exam)__
 <!-- ------------ --><a name="13"></a>
 <tr><td>13</td><td><strong>Oct 23</strong><br>Mon</td>
 <td markdown="block">
-* Database Design Continued
-* Authentication
+* NoSQL Database
+* Object Document Mapper 
+* Database Design
 </td>
 <td></td><td></td><td markdown="block"></td>{% comment %}
 {% include schedule/14.markdown %}
@@ -241,9 +237,8 @@ __EXAM #1 (Midterm Exam)__
 <!-- ------------ --><a name="14"></a>
 <tr><td>14</td><td><strong>Oct 25</strong><br>Wed</td>
 <td markdown="block">
-* URL Parameters
-* Finishing Database
-* Validation
+* Database Design Continued
+* Authentication
 
 {% comment %}
 * validation comes from next class?
@@ -262,9 +257,12 @@ __EXAM #1 (Midterm Exam)__
 <!-- ------------ --><a name="15"></a>
 <tr><td>15</td><td><strong>Oct 30</strong><br>Mon</td>
 <td markdown="block">
-
 * Authentication
 * Authentication Library
+* URL Parameters
+* Finishing Database
+* Validation
+
 
 </td>
 <td></td><td></td><td markdown="block"></td>{% comment %}
