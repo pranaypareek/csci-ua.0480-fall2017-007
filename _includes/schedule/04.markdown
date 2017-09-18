@@ -1,9 +1,10 @@
 	<td markdown="block">
 
-* [Higher Order Functions Continued, Arrow Functions](slides/04/higher-order-functions-continued.html) 
-* [JSON](slides/02/objects.html#/20)
-* [Objects Revisited, Arrow Functions with "this"](slides/04/objects-prototypes.html)
-* [A Detour: Globals, Methods, and This](slides/04/globals-methods-this.html)
+* [Higher Order Functions](slides/js/higher-order-functions.html) 
+* [Higher Order Functions Continued](slides/js/higher-order-functions-continued.html) 
+* [Objects Revisited, Arrow Functions with "this"](slides/js/objects-prototypes.html)
+* [A Detour: Globals, Methods, and This](slides/js/globals-methods-this.html)
+
 
 
 
