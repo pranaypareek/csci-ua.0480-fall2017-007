@@ -25,13 +25,6 @@
 
 </td>
 	<td markdown="block">
-Due Wednesday, 2/8, by 11pm
-
-* [Homework #1](homework/01.html) 
-
-Due Date TBD
-
-* Quiz #04 and #05
 
 
 </td>
